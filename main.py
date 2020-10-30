@@ -1,5 +1,5 @@
 import pygame
-from checkers.constants import WIDTH, HEIGHT, SQUARE_SIZE, RED
+from checkers.constants import WIDTH, HEIGHT, SQUARE_SIZE
 from checkers.game import Game
 
 FPS = 60
@@ -9,15 +9,23 @@ pygame.display.set_caption("Checkers")
 
 
 def get_row_col_from_mouse(pos):
+    """
+    Gets the position from the mouse pointer.
+
+    :param pos: an x,y coordinate.
+
+    :return: the row and column on the board as an int that the mouse is pointing to.
+    """
     x, y = pos
     row = y // SQUARE_SIZE
     column = x // SQUARE_SIZE
     return row, column
 
-# def move_with_mouse()
-
 
 def main():
+    """
+    Drives the program.
+    """
     run = True
     game = Game(WINDOW)
 
