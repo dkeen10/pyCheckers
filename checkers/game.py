@@ -4,7 +4,16 @@ from .constants import RED, WHITE, BLUE, SQUARE_SIZE
 
 
 class Game:
+    """
+    Represents a Game of Checkers.
+    """
+
     def __init__(self, window):
+        """
+        Initialize a new game of Checkers.
+
+        :param window: the pygame window
+        """
         self._init()
         self.window = window
 
@@ -39,6 +48,10 @@ class Game:
         piece = self.board.get_piece(row, column)
         if self.selected and piece == 0 and (row, column) in self.valid_moves:
             self.board.move(self.selected, row, column)
+            skipped = self.valid_moves[(row, column)]
+            if skipped:
+                self.board.remove(skipped)
+            self.next_turn()
         else:
             return False
         return True
@@ -49,7 +62,11 @@ class Game:
             pygame.draw.circle(self.window, BLUE, (column * SQUARE_SIZE + SQUARE_SIZE // 2, row * SQUARE_SIZE + SQUARE_SIZE // 2), 12)
 
     def next_turn(self):
+        self.valid_moves = {}
         if self.turn == RED:
-            self.turn == WHITE
+            self.turn = WHITE
         else:
-            self.turn == RED
+            self.turn = RED
+
+    def winner(self):
+        return self.board.check_winner()

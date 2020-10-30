@@ -1,6 +1,5 @@
 import pygame
-from checkers.constants import WIDTH, HEIGHT, SQUARE_SIZE
-from checkers.board import Board
+from checkers.constants import WIDTH, HEIGHT, SQUARE_SIZE, RED
 from checkers.game import Game
 
 FPS = 60
@@ -25,11 +24,12 @@ def main():
     # setting framerate:
     clock = pygame.time.Clock()
 
-    # piece = board.get_piece(0, 1)
-    # board.move(piece, 4, 3)
-
     while run:
         clock.tick(FPS)
+
+        if game.winner() is not None:
+            print(f"{game.winner()} has won!")
+            run = False
 
         # checking events types:
         for event in pygame.event.get():
@@ -38,13 +38,8 @@ def main():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 pos = pygame.mouse.get_pos()
                 row, column = get_row_col_from_mouse(pos)
-                # piece = board.get_piece(row, column)
-                # board.move(piece, 4, 3)
-
+                game.select(row, column)
         game.update()
-        # board.draw_squares(WINDOW)
-        # board.draw(WINDOW)
-        # pygame.display.update()
     pygame.quit()
 
 
