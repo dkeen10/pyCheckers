@@ -46,7 +46,7 @@ class Game:
     def draw_valid_moves(self, moves):
         for move in moves:
             row, column = move
-            pygame.draw.circle(self.window, BLUE, (row * SQUARE_SIZE - SQUARE_SIZE // 2, column * SQUARE_SIZE - SQUARE_SIZE // 2), 12)
+            pygame.draw.circle(self.window, BLUE, (column * SQUARE_SIZE + SQUARE_SIZE // 2, row * SQUARE_SIZE + SQUARE_SIZE // 2), 12)
 
     def next_turn(self):
         if self.turn == RED:
