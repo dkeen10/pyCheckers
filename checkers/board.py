@@ -6,7 +6,6 @@ from .piece import Piece
 class Board:
     def __init__(self):
         self.board = []
-        self.selected_piece = None
         self.red_remaining = 12
         self.white_remaining = 12
         self.red_kings = 0
