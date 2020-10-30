@@ -1,5 +1,5 @@
 import pygame
-from .constants import RED, WHITE, SQUARE_SIZE
+from .constants import RED, WHITE, SQUARE_SIZE, CROWN
 
 
 class Piece:
@@ -35,6 +35,13 @@ class Piece:
         radius = SQUARE_SIZE // 2 - self.PADDING
         pygame.draw.circle(window, self.colour, (self.x_pos, self.y_pos), radius)
         pygame.draw.circle(window, self.colour, (self.x_pos, self.y_pos), radius + self.BORDER)
+        if self.king:
+            window.blit(CROWN, (self.x_pos - CROWN.get_width() // 2, self.y_pos - CROWN.get_height() // 2))
+
+    def move(self, row, column):
+        self.row = row
+        self.column = column
+        self.calc_pos()
 
     def __repr__(self):
         """Returns a string representation of this piece."""
