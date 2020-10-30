@@ -1,13 +1,13 @@
 import pygame
 from .constants import RED, WHITE, SQUARE_SIZE
 
-class Piece:
 
+class Piece:
     PADDING = 8
     BORDER = 2
 
     def __init__(self, row, column, colour):
-        up = 1
+        up = -1
         down = 1
 
         self.row = row
@@ -19,7 +19,7 @@ class Piece:
         self.y_pos = 0
         self.calc_pos()
 
-        if self.color == RED:
+        if self.colour == RED:
             self.direction = up
         else:
             self.direction = down
@@ -33,8 +33,8 @@ class Piece:
 
     def draw(self, window):
         radius = SQUARE_SIZE // 2 - self.PADDING
-        pygame.draw.circle(window, self.color, (self.x_pos, self.y_pos), radius)
-        pygame.draw.circle(window, self.color, (self.x_pos, self.y_pos), radius + self.BORDER)
+        pygame.draw.circle(window, self.colour, (self.x_pos, self.y_pos), radius)
+        pygame.draw.circle(window, self.colour, (self.x_pos, self.y_pos), radius + self.BORDER)
 
     def __repr__(self):
         """Returns a string representation of this piece."""

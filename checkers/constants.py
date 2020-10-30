@@ -12,3 +12,6 @@ WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
+
+CROWN = pygame.image.load('assests/crown.png')
+pygame.transform.scale(CROWN, (43, 23))
