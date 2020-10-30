@@ -1,6 +1,6 @@
 import pygame
 from .board import Board
-from .constants import RED, WHITE
+from .constants import RED, WHITE, BLUE, SQUARE_SIZE
 
 
 class Game:
@@ -10,6 +10,7 @@ class Game:
 
     def update(self):
         self.board.draw(self.window)
+        self.draw_valid_moves(self.valid_moves)
         pygame.display.update()
 
     def _init(self):
@@ -41,6 +42,11 @@ class Game:
         else:
             return False
         return True
+
+    def draw_valid_moves(self, moves):
+        for move in moves:
+            row, column = move
+            pygame.draw.circle(self.window, BLUE, (row * SQUARE_SIZE - SQUARE_SIZE // 2, column * SQUARE_SIZE - SQUARE_SIZE // 2), 12)
 
     def next_turn(self):
         if self.turn == RED:
