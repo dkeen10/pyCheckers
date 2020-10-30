@@ -12,9 +12,9 @@ def get_row_col_from_mouse(pos):
     """
     Gets the position from the mouse pointer.
 
-    :param pos: an x,y coordinate.
+    :param pos: an x,y coordinate
 
-    :return: the row and column on the board as an int that the mouse is pointing to.
+    :return: the row and column on the board as an int to which the mouse is pointing
     """
     x, y = pos
     row = y // SQUARE_SIZE
